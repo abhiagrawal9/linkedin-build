@@ -21,7 +21,13 @@ const Header = () => {
         />
         <div className='header__search'>
           <SearchIcon />
-          <input type='text' name='search' id='search' placeholder='Search' />
+          <input
+            autoComplete='off'
+            type='text'
+            name='search'
+            id='search'
+            placeholder='Search'
+          />
         </div>
       </div>
       <div className='header__right'>

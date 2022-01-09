@@ -1,2 +1,39 @@
 .post {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.post__info {
+  margin-left: 10px;
+}
+
+.post__info h2 {
+  font-size: 15px;
+}
+
+.post__info p {
+  font-size: 13px;
+  color: gray;
+}
+
+.post__body {
+  overflow-wrap: anywhere;
+}
+
+.post__body p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.post__actions {
+  display: flex;
+  justify-content: space-evenly;
 }

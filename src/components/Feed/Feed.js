@@ -6,6 +6,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import Post from '../Post/Post';
 
 const Feed = () => {
   return (
@@ -29,7 +30,13 @@ const Feed = () => {
           />
         </div>
       </div>
-      <div className='feed__posts'>{/* <Post/> */}</div>
+      <div className='feed__posts'>
+        <Post
+          name='Abhishek Agrawal'
+          description='React is fun'
+          message='This build uses React.js, Redux, Firebase and Material UI.'
+        />
+      </div>
     </div>
   );
 };
