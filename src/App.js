@@ -13,6 +13,7 @@ import {
   login as LoginAction,
   selectUser,
 } from './features/userSlice';
+import Widgets from './components/Widgets/Widgets';
 
 const App = () => {
   const user = useSelector(selectUser);
@@ -49,6 +50,7 @@ const App = () => {
         <main className='app__body'>
           <Sidebar />
           <Feed />
+          <Widgets />
         </main>
       )}
     </div>
