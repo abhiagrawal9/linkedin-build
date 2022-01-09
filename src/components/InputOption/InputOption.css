@@ -1,0 +1,17 @@
+.importOption {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  cursor: pointer;
+  color: gray;
+}
+
+.importOption:hover {
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.importOption h4 {
+  margin-left: 5px;
+}

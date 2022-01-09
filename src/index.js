@@ -19,9 +19,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-/*
-
-mkdir -p src/components/Sidebar && touch src/components/Sidebar/Sidebar.js src/components/Sidebar/Sidebar.css
-
-*/
