@@ -1,10 +1,16 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <div className='app'>
-      <h1>Let's build Linkedin</h1>
+      {/* Header */}
+      <Header />
+      {/* App body */}
+      {/* Sidebar */}
+      {/* Feed */}
+      {/* Widgets */}
     </div>
   );
 };
