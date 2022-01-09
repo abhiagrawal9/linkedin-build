@@ -35,8 +35,6 @@ const Feed = () => {
           };
           posts.push(postItem);
         });
-        console.log('Fetched posts from firebase!');
-        console.log(posts);
         setPosts(posts);
       },
       (error) => {

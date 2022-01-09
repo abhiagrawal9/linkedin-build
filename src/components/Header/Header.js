@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { signOut } from 'firebase/auth';
+
 import './Header.css';
 import HeaderOption from '../HeaderOption/HeaderOption';
 import SearchIcon from '@material-ui/icons/Search';
@@ -9,8 +12,17 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Avatar from '../../assets/avatar.jpg';
+import { logout } from '../../features/userSlice';
+import { auth } from '../../firebase';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = async () => {
+    dispatch(logout());
+    await signOut(auth);
+  };
+
   return (
     <header className='header'>
       <div className='header__left'>
@@ -36,7 +48,7 @@ const Header = () => {
         <HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
         <HeaderOption Icon={ChatIcon} title='Messaging' />
         <HeaderOption Icon={NotificationsIcon} title='Notifications' />
-        <HeaderOption avatar={Avatar} title='Me' />
+        <HeaderOption onClick={logoutHandler} avatar={Avatar} title='Me' />
       </div>
     </header>
   );

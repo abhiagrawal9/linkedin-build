@@ -5,11 +5,8 @@ import { auth } from '../../firebase';
 import { useDispatch } from 'react-redux';
 import { login as LoginAction } from '../../features/userSlice';
 import {
-  getAuth,
   createUserWithEmailAndPassword,
-  signOut,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   updateProfile,
 } from 'firebase/auth';
 
@@ -23,8 +20,21 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
+    if (!emailAdd.includes('@')) {
+      return alert('Please enter valid email');
+    }
+
     try {
       const cred = await signInWithEmailAndPassword(auth, emailAdd, password);
+      const { uid, email, displayName, photoURL } = cred.user;
+      dispatch(
+        LoginAction({
+          uid,
+          email,
+          displayName,
+          photoURL,
+        })
+      );
     } catch (error) {
       console.log(error.message);
     }
