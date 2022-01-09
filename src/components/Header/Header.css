@@ -13,11 +13,11 @@
 
 .header__left {
   display: flex;
+  align-items: center;
 }
 
 .header__icon {
   object-fit: contain;
-  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
