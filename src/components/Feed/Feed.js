@@ -39,7 +39,6 @@ const Feed = () => {
           };
           posts.push(postItem);
         });
-        console.log(posts);
         setPosts(posts);
       },
       (error) => {
