@@ -22,6 +22,6 @@ serviceWorker.unregister();
 
 /*
 
-mkdir -p src/components/HeaderOption && touch src/components/HeaderOption/HeaderOption.js src/components/HeaderOption/HeaderOption.css
+mkdir -p src/components/Sidebar && touch src/components/Sidebar/Sidebar.js src/components/Sidebar/Sidebar.css
 
 */
