@@ -40,6 +40,8 @@
 
 .sidebar__avatar {
   margin-bottom: 10px;
+  border: 2px solid white;
+  object-fit: contain;
 }
 
 .sidebar__stats {

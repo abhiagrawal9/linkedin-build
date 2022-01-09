@@ -38,7 +38,7 @@ const App = () => {
     return () => {
       unsubAuth();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='app'>

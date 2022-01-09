@@ -16,11 +16,14 @@ import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Post from '../Post/Post';
 import { db } from '../../firebase';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice';
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
   const inputRef = useRef('');
   const colRef = useMemo(() => collection(db, 'posts'), []);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     const orderQuery = query(colRef, orderBy('timestamp', 'desc'));
@@ -35,6 +38,7 @@ const Feed = () => {
           };
           posts.push(postItem);
         });
+        console.log(posts);
         setPosts(posts);
       },
       (error) => {
@@ -51,9 +55,9 @@ const Feed = () => {
     const postMessage = inputRef.current.value;
     try {
       addDoc(colRef, {
-        name: 'Abhishek Agrawal',
-        photoUrl: '',
-        description: 'React Developer',
+        name: user.displayName,
+        photoUrl: user.photoURL,
+        description: 'Web Developer',
         message: postMessage,
         timestamp: serverTimestamp(),
       });

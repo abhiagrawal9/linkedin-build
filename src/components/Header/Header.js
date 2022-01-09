@@ -11,7 +11,6 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Avatar from '../../assets/avatar.jpg';
 import { logout } from '../../features/userSlice';
 import { auth } from '../../firebase';
 
@@ -48,7 +47,7 @@ const Header = () => {
         <HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
         <HeaderOption Icon={ChatIcon} title='Messaging' />
         <HeaderOption Icon={NotificationsIcon} title='Notifications' />
-        <HeaderOption onClick={logoutHandler} avatar={Avatar} title='Me' />
+        <HeaderOption avatar={true} onClick={logoutHandler} title='Me' />
       </div>
     </header>
   );
