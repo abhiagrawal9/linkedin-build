@@ -1,4 +1,12 @@
-import React from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
+import {
+  collection,
+  onSnapshot,
+  serverTimestamp,
+  addDoc,
+  query,
+  orderBy,
+} from 'firebase/firestore';
 import './Feed.css';
 import CreateIcon from '@material-ui/icons/Create';
 import InputOption from '../InputOption/InputOption';
@@ -7,16 +15,78 @@ import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Post from '../Post/Post';
+import { db } from '../../firebase';
 
 const Feed = () => {
+  const [posts, setPosts] = useState([]);
+  const inputRef = useRef('');
+  const colRef = useMemo(() => collection(db, 'posts'), []);
+
+  useEffect(() => {
+    const orderQuery = query(colRef, orderBy('timestamp', 'desc'));
+    const unsubPostsCollection = onSnapshot(
+      orderQuery,
+      (snapshot) => {
+        const posts = [];
+        snapshot.docs.forEach((doc) => {
+          const postItem = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          posts.push(postItem);
+        });
+        console.log('Fetched posts from firebase!');
+        console.log(posts);
+        setPosts(posts);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    return () => {
+      unsubPostsCollection();
+    };
+  }, [colRef]);
+
+  const sendPostHandler = async (e) => {
+    e.preventDefault();
+    const postMessage = inputRef.current.value;
+    try {
+      addDoc(colRef, {
+        name: 'Abhishek Agrawal',
+        photoUrl: '',
+        description: 'React Developer',
+        message: postMessage,
+        timestamp: serverTimestamp(),
+      });
+      inputRef.current.value = '';
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const postsData = posts.map((post) => {
+    return (
+      <Post
+        key={post.id}
+        photoUrl={post.photoUrl}
+        name={post.name}
+        description={post.description}
+        message={post.message}
+      />
+    );
+  });
+
   return (
     <div className='feed'>
       <div className='feed__inputContianer'>
         <div className='feed__input'>
           <CreateIcon />
           <form autoComplete='off'>
-            <input type='text' name='post' id='post' />
-            <button type='submit'>Post</button>
+            <input ref={inputRef} type='text' name='post' id='post' />
+            <button onClick={sendPostHandler} type='submit'>
+              Post
+            </button>
           </form>
         </div>
         <div className='feed__inputOptions'>
@@ -31,11 +101,10 @@ const Feed = () => {
         </div>
       </div>
       <div className='feed__posts'>
-        <Post
-          name='Abhishek Agrawal'
-          description='React is fun'
-          message='This build uses React.js, Redux, Firebase and Material UI.'
-        />
+        {posts.length > 0 && postsData}
+        {/* {posts.length === 0 && (
+          <h3 style={{ textAlign: 'center' }}>No posts to show!</h3>
+        )} */}
       </div>
     </div>
   );
