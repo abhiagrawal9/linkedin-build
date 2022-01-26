@@ -31,14 +31,10 @@ const Feed = () => {
     const unsubPostsCollection = onSnapshot(
       orderQuery,
       (snapshot) => {
-        const posts = [];
-        snapshot.docs.forEach((doc) => {
-          const postItem = {
-            id: doc.id,
-            ...doc.data(),
-          };
-          posts.push(postItem);
-        });
+        const posts = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
         setPosts(posts);
       },
       (error) => {
