@@ -74,44 +74,54 @@ const Login = () => {
   };
 
   return (
-    <div className='login'>
-      <img src={LinkedinLogo} alt='Linkedin Login Page' />
-      <form>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type='text'
-          placeholder='Full Name (required if registering)'
-        />
-        <input
-          value={profilePic}
-          onChange={(e) => setprofilePic(e.target.value)}
-          type='text'
-          placeholder='Profile pic url (optional)'
-        />
-        <input
-          value={emailAdd}
-          onChange={(e) => setEmailAdd(e.target.value)}
-          type='email'
-          placeholder='Email'
-        />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type='password'
-          placeholder='Password'
-        />
-        <button onClick={loginHandler} type='submit'>
-          Sign In
-        </button>
-      </form>
-      <p>
-        Not a member?
-        <span onClick={register} className='login__register'>
-          Register Now
-        </span>
-      </p>
-    </div>
+    <React.Fragment>
+      <div className='login'>
+        <img src={LinkedinLogo} alt='Linkedin Login Page' />
+        <form>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            type='text'
+            placeholder='Full Name (required if registering)'
+          />
+          <input
+            value={profilePic}
+            onChange={(e) => setprofilePic(e.target.value)}
+            type='text'
+            placeholder='Profile pic url (optional)'
+          />
+          <input
+            value={emailAdd}
+            onChange={(e) => setEmailAdd(e.target.value)}
+            type='email'
+            placeholder='Email'
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type='password'
+            placeholder='Password'
+          />
+          <button onClick={loginHandler} type='submit'>
+            Sign In
+          </button>
+        </form>
+        <p>
+          Not a member?
+          <span onClick={register} className='login__register'>
+            Register Now
+          </span>
+        </p>
+      </div>
+      <button
+        onClick={() => {
+          setEmailAdd('testaccount@test.com');
+          setPassword('test@123');
+        }}
+      >
+        Fill test account
+      </button>
+    </React.Fragment>
   );
 };
 
