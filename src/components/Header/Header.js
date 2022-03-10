@@ -13,8 +13,11 @@ import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { logout } from '../../features/userSlice';
 import { auth } from '../../firebase';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../features/userSlice';
 
 const Header = () => {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const logoutHandler = async () => {
@@ -47,7 +50,9 @@ const Header = () => {
         <HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
         <HeaderOption Icon={ChatIcon} title='Messaging' />
         <HeaderOption Icon={NotificationsIcon} title='Notifications' />
-        <HeaderOption avatar={true} onClick={logoutHandler} title='Me' />
+        {user && (
+          <HeaderOption avatar={true} onClick={logoutHandler} title='Logout' />
+        )}
       </div>
     </header>
   );
