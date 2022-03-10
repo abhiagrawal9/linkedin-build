@@ -2,6 +2,10 @@
 
 Built using React.js, Redux, Firebase and Material UI.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f20284e8-8a17-4cc8-90f1-bd9a6d5d6ba6/deploy-status)](https://app.netlify.com/sites/linkedin-build/deploys)
+
+https://linkedin-build.netlify.app/
+
 ### Add Your Firebase config
 
 In the firbase.js under src folder, update your firebase config object.
