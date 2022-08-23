@@ -40,5 +40,5 @@ See the official documentaion about [deployment](https://facebook.github.io/crea
 QUICK DEMO:
 https://drive.google.com/file/d/1JMPwvTzBOv5KPHh1wtr_-mvW2Tbphmv4/view?usp=sharing
 
-
+Also deployed with Vercel.
 
