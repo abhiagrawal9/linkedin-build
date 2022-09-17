@@ -1,4 +1,10 @@
 import React, { useMemo, useState, useRef, useEffect } from 'react';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
+import CreateIcon from '@material-ui/icons/Create';
+import EventIcon from '@material-ui/icons/Event';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import { useSelector } from 'react-redux';
+import FlipMove from 'react-flip-move';
 import {
   collection,
   onSnapshot,
@@ -9,19 +15,14 @@ import {
   QuerySnapshot,
   DocumentData,
 } from 'firebase/firestore';
-import { useSelector } from 'react-redux';
-import FlipMove from 'react-flip-move';
-import './Feed.css';
-import CreateIcon from '@material-ui/icons/Create';
-import InputOption from '../InputOption/InputOption';
-import ImageIcon from '@material-ui/icons/Image';
-import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
-import EventIcon from '@material-ui/icons/Event';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import Post from '../Post/Post';
+
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
 import { IPost } from '../../models/Post';
+import InputOption from '../InputOption/InputOption';
+import ImageIcon from '@material-ui/icons/Image';
+import Post from '../Post/Post';
+import './Feed.css';
 
 const Feed: React.FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
@@ -49,14 +50,14 @@ const Feed: React.FC = () => {
     };
   }, [colRef]);
 
-  const sendPostHandler = async (e) => {
+  const sendPostHandler = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const postMessage = inputRef.current.value;
     try {
       addDoc(colRef, {
-        name: user.displayName,
-        photoUrl: user.photoURL,
-        description: user.email,
+        name: user?.displayName,
+        photoUrl: user?.photoURL,
+        description: user?.email,
         message: postMessage,
         timestamp: serverTimestamp(),
       });
@@ -101,7 +102,9 @@ const Feed: React.FC = () => {
           />
         </div>
       </div>
-      <div className='feed__posts'>{posts.length > 0 && postsData}</div>
+      <div className='feed__posts'>
+        <FlipMove>{posts.length > 0 && postsData}</FlipMove>
+      </div>
     </div>
   );
 };
