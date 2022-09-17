@@ -6,6 +6,8 @@ import {
   addDoc,
   query,
   orderBy,
+  QuerySnapshot,
+  DocumentData,
 } from 'firebase/firestore';
 import { useSelector } from 'react-redux';
 import FlipMove from 'react-flip-move';
@@ -19,10 +21,11 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import Post from '../Post/Post';
 import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
+import { IPost } from '../../models/Post';
 
-const Feed = () => {
-  const [posts, setPosts] = useState([]);
-  const inputRef = useRef('');
+const Feed: React.FC = () => {
+  const [posts, setPosts] = useState<IPost[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null!);
   const colRef = useMemo(() => collection(db, 'posts'), []);
   const user = useSelector(selectUser);
 
@@ -30,12 +33,11 @@ const Feed = () => {
     const orderQuery = query(colRef, orderBy('timestamp', 'desc'));
     const unsubPostsCollection = onSnapshot(
       orderQuery,
-      (snapshot) => {
-        const posts = snapshot.docs.map((doc) => ({
+      (snapshot: QuerySnapshot<DocumentData>) => {
+        const posts: IPost[] = snapshot.docs.map((doc) => ({
+          ...(doc.data() as IPost),
           id: doc.id,
-          ...doc.data(),
         }));
-        console.log(posts);
         setPosts(posts);
       },
       (error) => {
@@ -99,9 +101,7 @@ const Feed = () => {
           />
         </div>
       </div>
-      <div className='feed__posts'>
-        <FlipMove>{posts.length > 0 && postsData}</FlipMove>
-      </div>
+      <div className='feed__posts'>{posts.length > 0 && postsData}</div>
     </div>
   );
 };
