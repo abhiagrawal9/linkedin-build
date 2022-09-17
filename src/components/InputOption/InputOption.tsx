@@ -1,7 +1,15 @@
 import React from 'react';
+import { SvgIconComponent } from '@material-ui/icons';
+
 import './InputOption.css';
 
-const InputOption = ({ Icon, title, color }) => {
+type InputOptionProps = {
+  title: string;
+  color: string;
+  Icon: SvgIconComponent;
+};
+
+const InputOption: React.FC<InputOptionProps> = ({ Icon, title, color }) => {
   return (
     <div className='importOption'>
       <Icon style={{ color: color }} />
