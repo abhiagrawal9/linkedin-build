@@ -35,6 +35,7 @@ const Feed = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log(posts);
         setPosts(posts);
       },
       (error) => {
