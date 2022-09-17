@@ -31,7 +31,7 @@
   font-size: 12px;
 }
 
-.sidebar__top img {
+.sidebar_banner {
   width: 100%;
   height: 60px;
   object-fit: cover;

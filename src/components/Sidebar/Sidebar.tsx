@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className='sidebar__top'>
-        <img src={SidebarImg} alt='' />
+        <img className='sidebar_banner' src={SidebarImg} alt='' />
         <Avatar src={user?.photoURL} className='sidebar__avatar'>
           {user?.displayName?.charAt(0).toUpperCase()}
         </Avatar>
