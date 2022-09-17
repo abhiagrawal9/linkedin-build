@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './App.css';
-
-import Feed from './components/Feed/Feed';
-import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
-import Login from './components/Login/Login';
-import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+
 import {
   logout as LogoutAction,
   login as LoginAction,
   selectUser,
 } from './features/userSlice';
+import Feed from './components/Feed/Feed';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import Login from './components/Login/Login';
+import { auth } from './firebase';
 import Widgets from './components/Widgets/Widgets';
+import './App.css';
 
 const App = () => {
   const user = useSelector(selectUser);
