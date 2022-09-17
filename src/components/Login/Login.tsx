@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import './Login.css';
-import LinkedinLogo from '../../assets/LinkedIn_Logo.svg.png';
-import { auth } from '../../firebase';
 import { useDispatch } from 'react-redux';
-import { login as LoginAction } from '../../features/userSlice';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
 
+import LinkedinLogo from '../../assets/LinkedIn_Logo.svg.png';
+import { login as LoginAction } from '../../features/userSlice';
+import { auth } from '../../firebase';
+import './Login.css';
+
 const Login = () => {
   const [emailAdd, setEmailAdd] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [profilePic, setprofilePic] = useState('');
-
   const dispatch = useDispatch();
 
-  const loginHandler = async (e) => {
+  const loginHandler = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!emailAdd.includes('@')) {
       return alert('Please enter valid email');
@@ -35,7 +35,7 @@ const Login = () => {
           photoURL,
         })
       );
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   };
@@ -68,7 +68,7 @@ const Login = () => {
           photoURL,
         })
       );
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   };
