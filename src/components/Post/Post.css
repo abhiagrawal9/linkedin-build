@@ -22,7 +22,13 @@
 
 .post__info p {
   font-size: 13px;
+  color: #121212;
+}
+
+.post__info .time {
+  font-size: 11px;
   color: gray;
+  margin-top: 3px;
 }
 
 .post__body {

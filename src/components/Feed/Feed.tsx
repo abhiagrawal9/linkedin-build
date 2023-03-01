@@ -1,28 +1,23 @@
-import React, { useMemo, useState, useRef, useEffect } from 'react';
-import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
+import './Feed.css';
+
+import {
+    addDoc, collection, DocumentData, onSnapshot, orderBy, query, QuerySnapshot, serverTimestamp
+} from 'firebase/firestore';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import FlipMove from 'react-flip-move';
+import { useSelector } from 'react-redux';
+
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import CreateIcon from '@material-ui/icons/Create';
 import EventIcon from '@material-ui/icons/Event';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import { useSelector } from 'react-redux';
-import FlipMove from 'react-flip-move';
-import {
-  collection,
-  onSnapshot,
-  serverTimestamp,
-  addDoc,
-  query,
-  orderBy,
-  QuerySnapshot,
-  DocumentData,
-} from 'firebase/firestore';
+import ImageIcon from '@material-ui/icons/Image';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 
-import { db } from '../../firebase';
 import { selectUser } from '../../features/userSlice';
+import { db } from '../../firebase';
 import { IPost } from '../../models/Post';
 import InputOption from '../InputOption/InputOption';
-import ImageIcon from '@material-ui/icons/Image';
 import Post from '../Post/Post';
-import './Feed.css';
 
 const Feed: React.FC = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
@@ -75,6 +70,7 @@ const Feed: React.FC = () => {
         name={post.name}
         description={post.description}
         message={post.message}
+        timestamp={post.timestamp}
       />
     );
   });
