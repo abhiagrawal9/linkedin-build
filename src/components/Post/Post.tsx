@@ -44,18 +44,17 @@ const getTimeDifference = (timestamp: Timestamp): string => {
   if (diffMinutes === 0) {
     timeDiffVal = `now`;
   } else if (diffMinutes < 60) {
-    timeDiffVal = `${diffMinutes} minutes`;
+    timeDiffVal = `${diffMinutes} ${diffMinutes === 1 ? 'minute' : 'minutes'}`;
   } else if (diffHours < 24) {
-    timeDiffVal = `${diffHours} hours`;
+    timeDiffVal = `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'}`;
   } else if (diffDays < 30) {
-    timeDiffVal = `${diffDays} days`;
+    timeDiffVal = `${diffDays} ${diffDays === 1 ? 'day' : 'days'}`;
   } else if (diffMonths < 12) {
-    timeDiffVal = `${diffMonths} months`;
+    timeDiffVal = `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'}`;
   } else {
     const diffYears = Math.floor(diffDays / 365.25);
-    timeDiffVal = `${diffYears} years`;
+    timeDiffVal = `${diffYears} ${diffYears === 1 ? 'year' : 'years'}`;
   }
-
   return timeDiffVal;
 };
 
