@@ -2,7 +2,7 @@
 
 Built using React.js, Redux, Firebase and Material UI.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f20284e8-8a17-4cc8-90f1-bd9a6d5d6ba6/deploy-status)](https://app.netlify.com/sites/linkedin-build/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c15f77d7-091c-4bbe-949b-b43b134079c7/deploy-status)](https://app.netlify.com/projects/abhi27shek/deploys)
 
 <https://linkedin-build.netlify.app/>
 
