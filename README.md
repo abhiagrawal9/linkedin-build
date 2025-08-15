@@ -6,9 +6,25 @@ Built using React.js, Redux, Firebase and Material UI.
 
 [Website URL](https://abhi27shek.netlify.app/)
 
-## Add Your Firebase config
+## Firebase Configuration
 
-In the firbase.js under src folder, update your firebase config object.
+To connect your app to Firebase, create a `.env` file in the root of the project with the following content (replace with your own Firebase project values if needed):
+
+```
+REACT_APP_API_KEY=your_api_key
+REACT_APP_AUTH_DOMAIN=your_auth_domain
+REACT_APP_DATABASE_URL=your_database_url
+REACT_APP_PROJECT_ID=your_project_id
+REACT_APP_STORAGE_BUCKET=your_storage_bucket
+REACT_APP_MESSAGING_SENDER_ID=your_messaging_sender_id
+REACT_APP_APP_ID=your_app_id
+REACT_APP_MEASUREMENT_ID=your_measurement_id
+```
+
+**Note:**
+
+- The `.env` file is automatically loaded by Create React App.
+- Do **not** commit your `.env` file to version control as it contains sensitive information.
 
 ### Start Dev Server
 
